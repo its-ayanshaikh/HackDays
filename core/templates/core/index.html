@@ -1,0 +1,305 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AskMyData · Snowflake Analytics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'core/style.css' %}" />
+</head>
+<body>
+<div class="app-shell">
+    <!-- Compact icon rail: mirrors the supplied B2B analytics reference. -->
+    <aside class="icon-rail" aria-label="Quick navigation">
+        <button class="rail-brand rail-link active" data-view="dashboard" title="Dashboard">↗</button>
+        <div class="rail-nav">
+            <button class="rail-link" data-view="dashboard" title="Dashboard">
+                <svg viewBox="0 0 24 24"><path d="M4 20V10m6 10V4m6 16v-7m5 7H2"/></svg>
+            </button>
+            <button class="rail-link" data-view="ask" title="Ask AI">
+                <svg viewBox="0 0 24 24"><path d="M4 5h16v12H8l-4 3V5z"/></svg>
+            </button>
+            <button class="rail-link" data-view="focus" title="Market Focus">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/></svg>
+            </button>
+            <button class="rail-link" data-view="radar" title="Anomaly Radar">
+                <svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 4.8-3.3 7.8-8 9-4.7-1.2-8-4.2-8-9V7l8-4zM8 13l2-2 2 2 4-5"/></svg>
+            </button>
+            <button class="rail-link" data-view="explorer" title="Data Explorer">
+                <svg viewBox="0 0 24 24"><path d="M4 5h16v14H4zM4 10h16M9 5v14"/></svg>
+            </button>
+            <button class="rail-link" data-view="history" title="History">
+                <svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.3-5.7L4 8m0-5v5h5M12 7v5l3 2"/></svg>
+            </button>
+            <button class="rail-link" data-view="settings" title="Settings">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1l2-1.5-2-3.4-2.4 1A8 8 0 0 0 15 6l-.3-2.6h-4L10.4 6A8 8 0 0 0 8.8 7L6.4 6l-2 3.4 2 1.5a7 7 0 0 0 0 2.1l-2 1.5 2 3.4 2.4-1A8 8 0 0 0 10.4 18l.3 2.6h4L15 18a8 8 0 0 0 1.6-1.1l2.4 1 2-3.4-2-1.5a7 7 0 0 0 .1-1z"/></svg>
+            </button>
+        </div>
+        <div class="rail-bottom">
+            <button class="rail-help" title="Help">?</button>
+            <div class="avatar">A<span class="avatar-dot"></span></div>
+        </div>
+    </aside>
+
+    <!-- Directory sidebar. -->
+    <aside class="sidebar">
+        <div class="side-title">
+            <span class="product-name">Analytics</span>
+            <span class="product-sub">Snowflake workspace</span>
+        </div>
+
+        <div class="nav-label">Directories</div>
+        <nav class="nav">
+            <button class="nav-item active" data-view="dashboard">
+                <svg viewBox="0 0 24 24"><path d="M4 13h6V4H4v9zm0 7h6v-4H4v4zm10 0h6V11h-6v9zm0-16v4h6V4h-6z"/></svg>
+                <span>Dashboard</span>
+            </button>
+            <button class="nav-item" data-view="ask">
+                <svg viewBox="0 0 24 24"><path d="M4 5h16v12H8l-4 3V5zM8 9h8m-8 4h5"/></svg>
+                <span>Ask AI</span>
+            </button>
+            <button class="nav-item" data-view="focus">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg>
+                <span>Market Focus</span>
+            </button>
+            <button class="nav-item" data-view="radar">
+                <svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 4.8-3.3 7.8-8 9-4.7-1.2-8-4.2-8-9V7l8-4zM8 13l2-2 2 2 4-5"/></svg>
+                <span>Anomaly Radar</span>
+            </button>
+            <button class="nav-item" data-view="explorer">
+                <svg viewBox="0 0 24 24"><path d="M4 5h16v14H4zM4 10h16M9 5v14"/></svg>
+                <span>Data Explorer</span>
+            </button>
+            <button class="nav-item" data-view="history">
+                <svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.3-5.7L4 8m0-5v5h5M12 7v5l3 2"/></svg>
+                <span>History</span>
+            </button>
+            <button class="nav-item" data-view="settings">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 1 1-7-7"/></svg>
+                <span>Settings</span>
+            </button>
+        </nav>
+
+        <div class="nav-label reports-label">Live reports</div>
+        <div class="report-list">
+            <button class="report-file rail-target" data-view="dashboard"><span>▤</span> revenue_yearly.log</button>
+            <button class="report-file rail-target" data-view="focus"><span>▤</span> market_focus.log</button>
+            <button class="report-file rail-target" data-view="radar"><span>▤</span> anomaly_scan.live</button>
+            <button class="report-file rail-target" data-view="explorer"><span>▤</span> warehouse_data.log</button>
+            <button class="report-file rail-target" data-view="history"><span>▤</span> query_history.log</button>
+        </div>
+
+        <div class="side-status">
+            <span class="conn" id="connDot"></span>
+            <div><strong id="connLabel">Connecting…</strong><small>SNOWFLAKE</small></div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <!-- DASHBOARD -->
+        <section class="view active" id="view-dashboard">
+            <header class="page-head">
+                <div><span class="eyebrow">Signal command</span><h1>Business Intelligence Grid</h1></div>
+                <button class="btn secondary" id="refreshDash">↻ &nbsp; Refresh signals</button>
+            </header>
+            <div class="ops-strip">
+                <span><i class="online"></i> WAREHOUSE LIVE</span>
+                <span><i class="blue"></i> 4 SIGNAL CHANNELS</span>
+                <span><i class="orange"></i> AI MONITOR READY</span>
+                <strong>SNOWFLAKE · TPCH_SF1</strong>
+            </div>
+
+            <div class="dashboard-top">
+                <section class="analytics-panel chart-primary loading-panel" id="revenuePanel">
+                    <div class="panel-heading">
+                        <div><span class="panel-kicker">Temporal intelligence</span><h2>Revenue signal horizon</h2></div>
+                        <select class="compact-select" aria-label="Revenue scope"><option>All markets</option></select>
+                    </div>
+                    <div class="period-tabs"><button class="active">All</button><button>1 Year</button><button>5 Years</button></div>
+                    <div class="chart-stage"><canvas id="chYear"></canvas><div class="chart-loader"><span></span><small>Loading Snowflake data</small></div></div>
+                    <div class="chart-key"><span class="blue">Revenue</span><span class="orange">Growth signal</span><span class="purple">Market trend</span></div>
+                </section>
+                <aside class="kpis dashboard-kpis" id="kpis"></aside>
+            </div>
+
+            <div class="dashboard-bottom">
+                <section class="analytics-panel loading-panel">
+                    <div class="panel-heading"><div><span class="panel-kicker">Geographic signature</span><h2>Regional exposure polar</h2></div><span class="panel-note">LIVE RADAR</span></div>
+                    <div class="chart-stage compact"><canvas id="chRegion"></canvas><div class="chart-loader"><span></span><small>Mapping regions</small></div></div>
+                </section>
+                <section class="analytics-panel loading-panel">
+                    <div class="panel-heading"><div><span class="panel-kicker">Operational fingerprint</span><h2>Logistics mode radar</h2></div><span class="panel-note">SIGNATURE</span></div>
+                    <div class="chart-stage compact"><canvas id="chShip"></canvas><div class="chart-loader"><span></span><small>Building signature</small></div></div>
+                </section>
+            </div>
+
+            <section class="analytics-panel full-panel loading-panel constellation-panel">
+                <div class="panel-heading"><div><span class="panel-kicker">Audience topology</span><h2>Market segment constellation</h2></div><span class="panel-note">ORBITAL VIEW</span></div>
+                <div class="chart-stage constellation-stage"><div class="segment-constellation" id="segmentConstellation"></div><div class="chart-loader"><span></span><small>Plotting segment orbits</small></div></div>
+            </section>
+        </section>
+
+        <!-- ASK AI -->
+        <section class="view" id="view-ask">
+            <header class="page-head"><div><span class="eyebrow">Agent workspace</span><h1>Ask your data</h1><p>Natural-language analysis backed by live Snowflake data.</p></div></header>
+            <section class="analytics-panel query-panel">
+                <div class="panel-heading"><div><span class="panel-kicker">New analysis</span><h2>What do you want to understand?</h2></div><span class="keyboard-hint">⌘ + Enter</span></div>
+                <div class="ask-row">
+                    <textarea id="question" rows="3" placeholder="Ask about customers, markets, revenue or product performance…"></textarea>
+                    <button class="btn primary" id="askBtn"><span class="btn-text">Analyze</span><span class="spin" hidden></span></button>
+                </div>
+                <div class="chips">{% for q in samples %}<button class="chip" data-q="{{ q }}">{{ q }}</button>{% endfor %}</div>
+            </section>
+
+            <section class="analytics-panel" id="pipeline" hidden>
+                <div class="panel-heading"><div><span class="panel-kicker">Agent trace</span><h2>How the answer was built</h2></div></div>
+                <div class="steps" id="steps"></div>
+            </section>
+            <div class="error-box" id="askError" hidden></div>
+
+            <div id="askResults" hidden>
+                <section class="answer-panel">
+                    <span class="answer-label">AI ANALYSIS</span>
+                    <div class="headline" id="headline"></div>
+                    <p class="body" id="insightBody"></p>
+                    <div class="action" id="action"></div>
+                    <details class="sql-toggle"><summary>Technical query details</summary><pre><code id="sqlBox"></code></pre></details>
+                </section>
+                <div class="result-split">
+                    <section class="analytics-panel" id="chartCard" hidden><div class="panel-heading"><h2>Result visualization</h2></div><div class="chart-stage compact"><canvas id="askChart"></canvas></div></section>
+                    <section class="analytics-panel result-data"><div class="panel-heading"><h2>Result data</h2><span class="panel-note" id="rowCount"></span></div><div class="table-wrap"><table id="askTable"></table></div></section>
+                </div>
+            </div>
+        </section>
+
+        <!-- MARKET FOCUS -->
+        <section class="view" id="view-focus">
+            <header class="page-head"><div><span class="eyebrow">Regional intelligence</span><h1>Market Focus</h1><p>See what works, what lags and how to improve one market.</p></div></header>
+            <section class="analytics-panel focus-toolbar">
+                <div><label for="nationSelect">Target market</label><select id="nationSelect"><option>Loading markets…</option></select></div>
+                <button class="btn primary" id="focusBtn"><span class="btn-text">Analyze market</span><span class="spin" hidden></span></button>
+                <span id="focusRank" class="rank-copy"></span>
+            </section>
+            <div class="error-box" id="focusError" hidden></div>
+            <div class="empty-state" id="focusEmpty"><span>◎</span><strong>Select a market</strong><p>Choose a market to uncover product strengths, gaps and growth actions.</p></div>
+
+            <div id="focusOut" hidden>
+                <div class="kpis focus-kpis" id="focusKpis"></div>
+                <section class="answer-panel compact-answer"><span class="answer-label">MARKET VERDICT</span><div class="headline" id="focusSummary"></div></section>
+                <div class="dashboard-bottom">
+                    <section class="analytics-panel"><div class="panel-heading"><div><span class="panel-kicker">Performance</span><h2>Revenue trend</h2></div></div><div class="chart-stage compact"><canvas id="chFocusTrend"></canvas></div></section>
+                    <section class="analytics-panel"><div class="panel-heading"><div><span class="panel-kicker">Benchmark</span><h2>Segment mix vs average</h2></div></div><div class="chart-stage compact"><canvas id="chFocusSeg"></canvas></div></section>
+                </div>
+                <div class="insight-columns">
+                    <section class="insight-block positive"><span class="insight-tag">STRENGTHS</span><h2>What's working here</h2><div id="focusStrengths"></div></section>
+                    <section class="insight-block risk"><span class="insight-tag">GAPS</span><h2>What's lagging & why</h2><div id="focusWeak"></div></section>
+                </div>
+                <section class="analytics-panel action-panel"><div class="panel-heading"><div><span class="panel-kicker">Action plan</span><h2>How to grow this market</h2></div></div><ul class="rec-list" id="focusRecs"></ul></section>
+                <section class="analytics-panel full-panel"><div class="panel-heading"><div><span class="panel-kicker">Product intelligence</span><h2>Top product types sold here</h2></div></div><div class="chart-stage wide"><canvas id="chFocusTypes"></canvas></div></section>
+            </div>
+        </section>
+
+        <!-- ANOMALY RADAR -->
+        <section class="view" id="view-radar">
+            <header class="page-head">
+                <div><span class="eyebrow">Snowflake signal intelligence</span><h1>Anomaly Radar</h1><p>Statistical detection, relationship mapping and AI-assisted root-cause investigation.</p></div>
+                <button class="btn primary" id="scanBtn"><span class="btn-text">Run signal scan</span><span class="spin" hidden></span></button>
+            </header>
+
+            <section class="radar-command">
+                <div class="scan-state"><span class="scan-pulse"></span><div><strong id="scanStatus">Scanner ready</strong><small>Snowflake statistical window engine</small></div></div>
+                <div class="scan-pipeline"><span>INGEST</span><i></i><span>BASELINE</span><i></i><span>DETECT</span><i></i><span>EXPLAIN</span></div>
+                <span class="engine-chip">SQL Z-SCORE</span>
+            </section>
+            <div class="error-box" id="radarError" hidden></div>
+
+            <div id="radarOut" hidden>
+                <div class="radar-metrics" id="anomalyMeta"></div>
+
+                <div class="radar-grid">
+                    <section class="cyber-panel radar-surface">
+                        <div class="cyber-head"><div><span>SEGMENT SIGNATURE</span><h2>Risk radar</h2></div><b>LIVE MODEL</b></div>
+                        <p class="visual-explainer"><strong>How to read:</strong> red shape jitna bahar jaata hai utna segment anomaly-risk zyada; blue shape business stability dikhata hai.</p>
+                        <div class="radar-canvas"><canvas id="chRiskRadar"></canvas><span class="radar-core">SCAN</span></div>
+                    </section>
+                    <section class="cyber-panel">
+                        <div class="cyber-head"><div><span>TEMPORAL MATRIX</span><h2>Anomaly heatmap</h2></div><b>ABS Z-SCORE</b></div>
+                        <p class="visual-explainer"><strong>How to read:</strong> har cell ek year + segment hai. Dark red unusual movement; striped blue “DQ” incomplete data period dikhata hai.</p>
+                        <div class="heatmap-legend"><span>Stable</span><i></i><span>Critical</span></div>
+                        <div class="signal-heatmap" id="anomalyHeatmap"></div>
+                    </section>
+                </div>
+
+                <section class="cyber-panel network-panel">
+                    <div class="cyber-head"><div><span>RELATIONSHIP GRAPH</span><h2>Region → segment revenue constellation</h2></div><b>SNOWFLAKE FLOW MAP</b></div>
+                    <p class="visual-explainer"><strong>How to read:</strong> left side regions, right side customer segments. Connection jitna thick hai, utna revenue flow strong hai; hover par exact value milegi.</p>
+                    <div class="market-network" id="marketNetwork"></div>
+                </section>
+
+                <div class="radar-grid investigation-grid">
+                    <section class="cyber-panel">
+                        <div class="cyber-head"><div><span>DETECTION FEED</span><h2>Highest-priority signals</h2></div><b id="signalCount">0 SIGNALS</b></div>
+                        <div class="anomaly-feed" id="anomalyList"></div>
+                    </section>
+                    <section class="cyber-panel ai-investigation">
+                        <div class="cyber-head"><div><span>AI INVESTIGATOR</span><h2>Likely causes & response</h2></div><b>GROUNDED</b></div>
+                        <div class="ai-verdict" id="aiVerdict"></div>
+                        <div class="cause-list" id="causeList"></div>
+                        <h3>Recommended response</h3>
+                        <ol class="response-list" id="actionList"></ol>
+                        <div class="watch-next"><span>WATCH NEXT</span><strong id="watchNext"></strong></div>
+                    </section>
+                </div>
+            </div>
+
+            <div class="radar-empty" id="radarEmpty">
+                <div class="radar-empty-visual"><i></i><i></i><i></i><span>◎</span></div>
+                <strong>Signal scanner standing by</strong>
+                <p>Run the scan to evaluate monthly segment behavior directly in Snowflake.</p>
+            </div>
+        </section>
+
+        <!-- DATA EXPLORER -->
+        <section class="view" id="view-explorer">
+            <header class="page-head"><div><span class="eyebrow">Warehouse</span><h1>Data Explorer</h1><p>Browse Snowflake tables without leaving the workspace.</p></div></header>
+            <div class="explorer-layout">
+                <aside class="table-directory"><span class="panel-kicker">AVAILABLE TABLES</span><div class="table-list" id="tableList"></div></aside>
+                <section class="analytics-panel explorer-panel"><div class="panel-heading"><div><span class="panel-kicker">Preview</span><h2 id="previewTitle">Select a table</h2></div><span class="panel-note" id="previewMeta"></span></div><div class="table-wrap explorer-table"><table id="previewTable"></table></div></section>
+            </div>
+        </section>
+
+        <!-- HISTORY -->
+        <section class="view" id="view-history">
+            <header class="page-head"><div><span class="eyebrow">Activity</span><h1>Query History</h1><p>Re-run a previous analysis in one click.</p></div><button class="btn secondary" id="clearHistory">Clear history</button></header>
+            <section class="analytics-panel history-panel"><div class="history-list" id="historyList"></div><div class="empty-state small" id="historyEmpty"><span>◷</span><strong>No analysis yet</strong><p>Your successful questions will appear here.</p></div></section>
+        </section>
+
+        <!-- SETTINGS -->
+        <section class="view" id="view-settings">
+            <header class="page-head"><div><span class="eyebrow">Configuration</span><h1>Workspace Settings</h1><p>Connection, warehouse and AI provider details.</p></div></header>
+            <section class="analytics-panel settings-panel"><div class="panel-heading"><div><span class="panel-kicker">System</span><h2>Connection details</h2></div></div><div class="settings-grid" id="settingsGrid"></div></section>
+            <section class="info-strip"><span>❄</span><div><strong>Snowflake-native data layer</strong><p>Business data remains in <b>SNOWFLAKE_SAMPLE_DATA.TPCH_SF1</b>. The AI provider is pluggable for trial-account compatibility.</p></div></section>
+        </section>
+    </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+window.ASKMYDATA = {
+    askUrl: "{% url 'core:ask' %}",
+    healthUrl: "{% url 'core:health' %}",
+    dashboardUrl: "{% url 'core:dashboard' %}",
+    tablesUrl: "{% url 'core:tables' %}",
+    tableUrl: "/api/table/",
+    nationsUrl: "{% url 'core:nations' %}",
+    focusUrl: "/api/focus/",
+    anomalyUrl: "{% url 'core:anomaly_radar' %}",
+    csrfToken: "{{ csrf_token }}"
+};
+</script>
+<script src="{% static 'core/app.js' %}"></script>
+</body>
+</html>
